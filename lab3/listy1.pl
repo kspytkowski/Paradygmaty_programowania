@@ -12,3 +12,7 @@ dlugosc([_|Ogon],Dlug) :-
 a2b([],[]).
 a2b([a|Ta],[b|Tb]) :- 
    a2b(Ta,Tb).
+
+sklej([],X,X).
+sklej([X|L1],L2,[X|L3]) :-
+	sklej(L1,L2,L3).
