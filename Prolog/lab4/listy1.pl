@@ -57,6 +57,7 @@ permutacja2(L,[X|P]) :-
 odwroc([],[]).
 odwroc([H|T],L) :-
 	odwroc(T,R),
+	sklej(R,[H],L).
 	
 wypisz([H|T]) :-
 	put(H), wypisz(T).
