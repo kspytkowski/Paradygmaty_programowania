@@ -57,6 +57,7 @@ permutacja2(L,[X|P]) :-
 odwroc([],[]).
 odwroc([H|T],L) :-
 	odwroc(T,R),
+	sklej(R,[H],L).
 	
 wypisz([H|T]) :-
 	put(H), wypisz(T).
@@ -67,9 +68,11 @@ plural(Noun, PL) :-
 	name(s,T), 
 	append(L,T, NL), 
 	name(PL, NL).
-	
+
 odwroc2(L,R) :-
      odwr2(L,[],R).
 odwr2([H|T],A,R) :-
      odwr2(T,[H|A],R).
 odwr2([],A,A).
+
+sklej_roznicowo(L - End, End, L).

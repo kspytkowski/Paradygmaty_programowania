@@ -42,7 +42,7 @@ nalezy2(X,L) :-
 	
 zawiera(S,L) :-
 	sklej(_,L2,L),
-	sklej(S,_,L2).
+	sklej(S,_,L2),!.
 	
 permutacja([],[]).
 permutacja([X|L],P) :-
