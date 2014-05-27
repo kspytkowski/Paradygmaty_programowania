@@ -8,7 +8,7 @@ insert el tree@(Node val left right)
 
 empty tree = tree == Empty
 
-valueOf Empty = Empty
+--valueOf Empty = []
 valueOf tree@(Node val _ _) = val
 
 isBinaryTree Empty = True
@@ -42,8 +42,8 @@ rvl tree@(Node val left right) = rvl right ++ [val] ++ rvl left
 rlv Empty = []
 rlv tree@(Node val left right) = rlv right ++ rlv left ++ [val]
 
-toString Empty = []
-toString tree@(Node val left right) = [val] ++ "(" ++ (toString left) ++ [','] ++ (toString right) ++ ")"
+toString Empty = ""
+toString tree@(Node val left right) = (show val) ++ "(" ++ (toString left) ++ [','] ++ (toString right) ++ ")"
 
 leaves Empty = []
 leaves tree@(Node val left right)
@@ -73,6 +73,26 @@ deleteElement el tree@(Node val left right)
         | left == Empty = right
         | right == Empty = left
         | otherwise = Node (rightMinElement right) left (remove (rightMinElement right) right)
+
+fromList [] tree = tree
+fromList (first : rest) tree = fromList rest (insert first tree)
+
+dumpDOT tree@(Node val left right) = "digraph G {\n" ++ dumpDOT1 tree ++ "}"
+dumpDOT1 tree@(Node val left right)  
+        | tree == Empty = ""
+        | left == Empty && right == Empty = ""
+        | left /= Empty && right == Empty = (show val) ++ " -> " ++ (show (valueOf left)) ++ "\n" ++ dumpDOT1 left 
+        | left == Empty && right /= Empty = (show val) ++ " -> " ++ (show (valueOf right)) ++ "\n" ++ dumpDOT1 right 
+        | otherwise = (show val) ++ " -> " ++ (show (valueOf left)) ++ "\n" ++ (show val) ++ " -> " ++ (show (valueOf right)) ++ "\n" ++ dumpDOT1 left ++ dumpDOT1 right
+
+getLevel level Empty = []
+getLevel level tree@(Node val left right) 
+        | level == 0 = [val]
+        | otherwise = getLevel (level - 1) left ++ getLevel (level - 1) right
+
+enumerateLevel tree = enumerateLevel2 tree 0
+enumerateLevel2 Empty _ = Empty
+enumerateLevel2 tree@(Node val left right) level = Node [val, level] (enumerateLevel2 left (level + 1)) (enumerateLevel2 right (level + 1))
 
 {-
 
