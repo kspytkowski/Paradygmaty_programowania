@@ -68,8 +68,6 @@ przodek(X,Z) :-
 madziecko(X) :-
 	rodzic(X,_).
 
-				% 2 razy robert? unique?
-
 %% ex 1.3
 szczesciarz(X) :-
 	madziecko(X).

@@ -1,7 +1,7 @@
 usun3pierwsze(L,L1) :-
 	sklej([_,_,_],L1,L).
 	
-%usun3pierwsze([_,_,_|L1],L1).
+usun3pierwsze2([_,_,_|L1],L1).
 	
 usun3ostatnie(L,L1) :-
 	sklej(L1,[_,_,_],L).
@@ -36,11 +36,6 @@ nieparzysta2([_|T]) :- parzysta2(T).
 	
 palindrom(L) :-
 	odwroc(L,L).
-
-palindrom2([]).
-palindrom2([_]).	
-%palindrom2(L) :-
-	
 	
 przesun(L1,L2) :-
 	pierwszyZSKLEJ(Element,L1),
@@ -73,7 +68,6 @@ przeloz2([Liczba|T1],[Slownie|T2]) :-
 	znaczy(Liczba,Slownie),
 	przeloz2(T1,T2).
 	
-
 podzbior([], []).
 
 podzbior(L,Z) :- 
@@ -95,39 +89,6 @@ podziel(L,L1,L2) :-
 	permutacja(L,L3),
 	sklej(L1,L2,L3).
 	
-moneta(500). % 5 zloty
-moneta(200).
-moneta(100).
-moneta(50).
-moneta(20).
-moneta(10).
-moneta(5).
-moneta(2).
-moneta(1).	
-
-%rozmien(Kwota,Nominaly) :-
-%	A is Kwota/500,
-%	Nowe1 is Kwota mod 500,
-%	B is Nowe1/200,
-%	Nowe2 is (Kwota - Nowe1*500) mod 200,
-%	Nowe3 is (Kwota - Nowe1*500 - Nowe2*200) mod 100,
-%	Nowe4 is (Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100) mod 50,
-%	Nowe5 is (Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100 - Nowe4*50) mod 20,
-%	Nowe6 is (Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100 - Nowe4*50 - Nowe5*20) mod 10,
-%	Nowe7 is (Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100 - Nowe4*50 - Nowe5*20 - Nowe6*10) mod 5,
-%	Nowe8 is (Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100 - Nowe4*50 - Nowe5*20 - Nowe6*10 - Nowe7*5) mod 2,
-%	Nowe9 is Kwota - Nowe1*500 - Nowe2*200 - Nowe3*100 - Nowe4*50 - Nowe5*20 - Nowe6*10 - Nowe7*5 - Nowe8*2,
-%	Nominaly=[A,B,Nowe3,Nowe4,Nowe5,Nowe6,Nowe7,Nowe8,Nowe9].
-
-
-
-
-
-
-
-
-
-
 cyfra(1).
 cyfra(2).
 cyfra(3).

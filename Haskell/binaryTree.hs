@@ -10,7 +10,7 @@ insert el tree@(Node val left right)
 
 empty tree = tree == Empty
 
---valueOf Empty = []
+valueOf Empty = []
 valueOf tree@(Node val _ _) = val
 
 isBinaryTree Empty = True
@@ -96,13 +96,12 @@ enumerateLevel tree = enumerateLevel2 tree 0
 enumerateLevel2 Empty _ = Empty
 enumerateLevel2 tree@(Node val left right) level = Node [val, level] (enumerateLevel2 left (level + 1)) (enumerateLevel2 right (level + 1))
 
-{-instance Show a => Show (BinaryTree a) where
+instance Show a => Show (BinaryTree a) where
 show Empty = "Empty"
 show tree@(Node val Empty Empty) = "Node " ++ (show val) ++ "(Empty Empty)"
 show tree@(Node val left Empty) = "Node " ++ (show val) ++ " " ++ "(" ++ (show left) ++ " Empty" ++ ")"
 show tree@(Node val Empty right) = "Node " ++ (show val) ++ "(" ++ "Empty " ++ (show right) ++ ")"
 show tree@(Node val left right) = "Node " ++ (show val) ++ " " ++ "(" ++ (show left) ++ ")" ++ "(" ++ (show right) ++ ")"
--}
 
 convert Empty = SEmpty
 convert tree@(Node val left right)
